@@ -26,49 +26,51 @@
 			  <option value="R">Réaumur</option>
 			</select>
 		  </div>
-		  <br><button type="button" class="btn btn-primary">Convert</button>
+		  <br>
+		  <button type="button"  onclick = "tempConvert()" class="btn btn-primary">Convert</button>
 		</form>
 	</div>
-	<div id="result" style="margin-top:10px;margin-left:10px; font-size: 20px; color:red;">
+	<div >
+		<p  id="result" style="margin-top:10px;margin-left:10px; font-size: 20px; color:red;"></p>
 	</div>
 	
 	<script>
-		
-		function enterTemp(temp,unit){
-				
-				var t = temp.val();
-				var u = unit.cal();
 
+			var t = temp.value();
+			var u = unit.value();
+			function enterTemp(t,u){		
+		
 				if(isNaN(t)){
 					msg = "Please verify whether the temperature value is correct!!!";
 					alert(msg);
 					return;
-			   }
-			   if(!(t >= -100 && t <= 100)){
+				}
+				if(!(t >= -100 && t <= 100)){
 					msg = "Tempurature entered (in Celsius) must be between 0 and 100 C'";
 					alert(msg);
 					return;
-			   }
+				}
+			}
 
-			   }
-
-		function tempConvert(temp,unit){
+			function tempConvert(t,u){
 				var t1;
 				var u1;
 			   
-			   if(u == "F"){
+				if(u == "F"){
 					t1 = t * (9/5) + 32;
 					u1 = "Fahrenheit";
-			   }else if(u == "K"){
+			 	}else if(u == "K"){
 					t1 =  t + 273.15;
 					u1 = "Réaumur";
-			   }else if(u == "R"){
+				}else if(u == "R"){
 					t1 = t * (4/5);
 					u1 = "Kelvin";
-			   }
-
-		}
-	   
+				}
+				document.getElementById("result").innerHTML = "Tempurature is "+ t1 +" in "+ u1;
+			}
+		
+	
+		
 	</script>
 </body>
 </html>
